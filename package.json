@@ -1,0 +1,11 @@
+{
+  "name": "packetsniffer",
+  "version": "1.0.0",
+  "description": "This repository will be used to sniff IP packets over Ethernet",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nishant Sahoo",
+  "license": "ISC"
+}
