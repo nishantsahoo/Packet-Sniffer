@@ -2,13 +2,52 @@
 <html>
 <head>
 	<title>SniffMe</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-  <div id="bandwidth" style="width: 75%; height: 50%; margin-left: 12.5%; align-content: center;">
-    <canvas id="line-chart" width="400" height="250"></canvas>
+  <div style="width: 100%">
+
+    <div style="float: left; width: 50%">
+      <div class="container">
+        <h2>IP Data</h2>
+        <table class="table table-bordered" style="width: 50%">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div style="float: left; width: 50%">
+      <div id="bandwidth" style="align-content: center; margin-left: 0">
+        <canvas id="line-chart" width="300" height="275"></canvas>
+      </div>
+    </div>
   </div>
 </body>
 </html>
