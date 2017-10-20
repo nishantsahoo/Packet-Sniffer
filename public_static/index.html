@@ -3,9 +3,10 @@
 <head>
 	<title>SniffMe</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-  <div id="bandwidth" style="margin-left: 2em; margin-right: 2em; width: 25em; height: 10em">
+  <div id="bandwidth" style="width: 50em; height: 30em; align-content: center;">
     <canvas id="line-chart" width="400" height="250"></canvas>
   </div>
 	<script type="text/javascript">
@@ -44,7 +45,7 @@
   options: {
     title: {
       display: true,
-      text: 'World population per region (in millions)'
+      text: 'Bandwidth'
     }
   }
 });
