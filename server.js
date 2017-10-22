@@ -16,3 +16,5 @@ app.use('/',express.static(__dirname+"/public_static"));
 app.listen(9000, function () {
     console.log("Server started on http://localhost:9000");
 });
+
+// Make calls to this API and try getting the Python script working

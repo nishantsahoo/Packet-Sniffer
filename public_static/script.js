@@ -1,6 +1,8 @@
 $(function()
 {
     // Need to call the bandwidth API and get the bandwidth details
+    // Check if the data of an IP is already present, if yes, don't upload the rest of the IP data again
+
 	console.log("This script be running");
     new Chart(document.getElementById("line-chart"), {
     type: 'line',
