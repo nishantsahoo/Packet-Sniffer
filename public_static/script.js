@@ -1,17 +1,6 @@
 $(function()
 {
-
-    k=0;
-    while (k<10)
-    {
-        setTimeout(function (){
-            main() // call of the function main
-            updatetable() // call of the function updatetable
-        }, 0);
-        k++;
-    }
-
-    function updatetable() // definition of the function updatetable
+    function updateIPtable() // definition of the function updatetable
     {
         $.get('/sniff/ippack', function (IPData) {
             tbody = $('#iptable');
@@ -74,4 +63,8 @@ $(function()
             });
         }, 1000);
     } // end of the main function
+
+    updateIPtable() // call of the function updateIPtable
+    main() // call of the main function
+
 }); // end of the script file
