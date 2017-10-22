@@ -15,16 +15,16 @@ $(function()
     {
         $.get('/sniff/ippack', function (IPData) {
             console.log("IP data: ", IPData);
-            for (IP in IPData)
+            for (var i = 0; i < IPData.length; i++)
             {
-                console.log("IP", IP[0]);
+                console.log("IP", IPData[i]);
                 tbody = $('#iptable');
-                var tString = "<tr><td>" + IP[1] + "</td>";
-                tString += "<td>" + IP.ip_hlen + "</td>";
-                tString += "<td>" + IP.ttl + "</td>";
-                tString += "<td>" + IP.protocol + "</td>";
-                tString += "<td>" + IP.source_address + "</td>";
-                tString += "<td>" + IP.destination_address + "</td></tr>";
+                var tString = "<tr><td>" + IPData[i].version + "</td>";
+                tString += "<td>" + IPData[i].ip_hlen + "</td>";
+                tString += "<td>" + IPData[i].ttl + "</td>";
+                tString += "<td>" + IPData[i].protocol + "</td>";
+                tString += "<td>" + IPData[i].source_address + "</td>";
+                tString += "<td>" + IPData[i].destination_address + "</td></tr>";
                 tbody.append(tString);
             }
         });                  
@@ -37,9 +37,9 @@ $(function()
         setTimeout(function () {
             var bandwidth = [];
 
-            function setBandwidth(bandwidthL)
+            function setBandwidth(bandwidthVal)
             {
-                bandwidth = bandwidthL;
+                bandwidth = bandwidthVal;
             }
             $.get('/sniff/bandwidth', function (bandwidth)
             {
