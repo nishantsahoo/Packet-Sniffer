@@ -14,17 +14,18 @@ $(function()
     function updatetable() // definition of the function updatetable
     {
         $.get('/sniff/ippack', function (IPData) {
-            console.log(IPData);
+            console.log("IP data: ", IPData);
             for (IP in IPData)
             {
+                console.log("IP", IP[0]);
                 tbody = $('#iptable');
-                var tString = "<tr><td>" + IPData.version + "</td>";
-                tString += "<td>" + IPData.ip_hlen + "</td>";
-                tString += "<td>" + IPData.ttl + "</td>";
-                tString += "<td>" + IPData.protocol + "</td>";
-                tString += "<td>" + IPData.source_address + "</td>";
-                tString += "<td>" + IPData.destination_address + "</td></tr>";
-                tbody.append(cartString);
+                var tString = "<tr><td>" + IP[1] + "</td>";
+                tString += "<td>" + IP.ip_hlen + "</td>";
+                tString += "<td>" + IP.ttl + "</td>";
+                tString += "<td>" + IP.protocol + "</td>";
+                tString += "<td>" + IP.source_address + "</td>";
+                tString += "<td>" + IP.destination_address + "</td></tr>";
+                tbody.append(tString);
             }
         });                  
     } // end of the function updatetable
