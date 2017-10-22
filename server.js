@@ -5,10 +5,11 @@ const app = express(); // express object
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
-// const ProductsRoute = require('./routes/products'); // route for products
-// app.use('/myapi/products/', ProductsRoute);
 const BandwidthRoute = require('./routes/bandwidth'); // route for Bandwidth
 app.use('/sniff/bandwidth', BandwidthRoute);
+const IPRoute = require('./routes/ippack'); // route for Bandwidth
+app.use('/sniff/ippack', BandwidthRoute);
+
 app.use('/',express.static(__dirname+"/public_static"));
 
 // app listen
