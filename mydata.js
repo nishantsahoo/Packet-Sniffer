@@ -47,8 +47,23 @@ function addBW(bandwidthVal) {
         });
 }
 
+function addIP(IPData)
+{
+    console.log("Version", IPData.version);
+    return IP.create(
+    {
+        version: IPData.version,
+        ip_hlen: IPData.ip_hlen,
+        ttl: IPData.ttl,
+        protocol: IPData.protocol,
+        source_address: IPData.source_address,
+        destination_address: IPData.destination_addresss 
+    });
+}
+
 module.exports = {
     getIP,
     getBW,
-    addBW
+    addBW,
+    addIP
 };

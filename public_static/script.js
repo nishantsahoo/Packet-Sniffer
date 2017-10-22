@@ -1,51 +1,76 @@
 $(function()
 {
-    // Need to call the bandwidth API and get the bandwidth details
-    // Check if the data of an IP is already present, if yes, don't upload the rest of the IP data again
 
-	console.log("This script be running");
-    new Chart(document.getElementById("line-chart"), {
-    type: 'line',
-    data: {
-        labels: [0,1,2,3,4,5,6,7,8,9,10],
-        datasets: [
-            { 
-                data: [86,114,106,106,107,111,133,221,783,2478,3634],
-                label: "Africa",
-                borderColor: "#3e95cd",
-                fill: false
-            },
-            { 
-                data: [282,350,411,502,635,809,947,1402,3700,5267,5220],
-                label: "Asia",
-                borderColor: "#8e5ea2",
-                fill: false
-            },
-            { 
-                data: [168,170,178,190,203,276,408,547,675,734,455],
-                label: "Europe",
-                borderColor: "#3cba9f",
-                fill: false
-            },
-            { 
-                data: [40,20,10,16,24,38,74,167,508,784,788],
-                label: "Latin America",
-                borderColor: "#e8c3b9",
-                fill: false
-            },  
-            { 
-                data: [6,3,2,2,7,26,82,172,312,433,444],
-                label: "North America",
-                borderColor: "#c45850",
-                fill: false
+    k=0;
+    while (k<10)
+    {
+        setTimeout(function (){
+            main() // call of the function main
+            updatetable() // call of the function updatetable
+        }, 1000);
+        k++;
+    }
+
+    function updatetable() // definition of the function updatetable
+    {
+        $.get('/sniff/ippack', function (IPData) {
+            console.log(IPData);
+            for (IP in IPData)
+            {
+                tbody = $('#iptable');
+                var tString = "<tr><td>" + IPData.version + "</td>";
+                tString += "<td>" + IPData.ip_hlen + "</td>";
+                tString += "<td>" + IPData.ttl + "</td>";
+                tString += "<td>" + IPData.protocol + "</td>";
+                tString += "<td>" + IPData.source_address + "</td>";
+                tString += "<td>" + IPData.destination_address + "</td></tr>";
+                tbody.append(cartString);
             }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'Bandwidth'
-        }
-      }
-    });
+        });                  
+    } // end of the function updatetable
+    
+	function main() // main function 
+    {
+        console.log("This script be running");
+
+        setTimeout(function () {
+            var bandwidth = [];
+
+            function setBandwidth(bandwidthL)
+            {
+                bandwidth = bandwidthL;
+            }
+            $.get('/sniff/bandwidth', function (bandwidth)
+            {
+                setBandwidth(bandwidth); // call of the function datasets
+                var bandwidthArray = [];
+                var labelsArray = [0];
+
+                for (var i = 0; i < bandwidth.length; i++) {
+                    bandwidthArray.push(bandwidth[i].bandwidth);
+                }
+
+                for (var i = 0; i < bandwidth.length - 1; i++) {
+                    labelsArray.push(i+1);
+                }
+                console.log("B Array", bandwidthArray);
+                console.log("Labels", labelsArray);
+
+                chartObj = new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    labels: labelsArray,
+                    datasets: [
+                        { 
+                            data: bandwidthArray,
+                            label: "Bandwidth (Mbps)",
+                            borderColor: "#3e95cd",
+                            fill: false
+                        }
+                    ]
+                  }
+                });
+            });
+        }, 1000);
+    } // end of the main function
 }); // end of the script file

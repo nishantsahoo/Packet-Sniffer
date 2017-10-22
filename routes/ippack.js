@@ -9,4 +9,11 @@ route.get('/', (req, res) => {
     })
 });
 
+route.post('/', (req, res) => {
+    console.log("IP API called");
+    console.log("Body", req.body);
+    data.addIP(req.body);
+    res.redirect('/sniff/ippack');
+});
+
 module.exports = route;

@@ -8,7 +8,7 @@ app.use(bodyparser.urlencoded({extended: true}));
 const BandwidthRoute = require('./routes/bandwidth'); // route for Bandwidth
 app.use('/sniff/bandwidth', BandwidthRoute);
 const IPRoute = require('./routes/ippack'); // route for Bandwidth
-app.use('/sniff/ippack', BandwidthRoute);
+app.use('/sniff/ippack', IPRoute);
 
 app.use('/',express.static(__dirname+"/public_static"));
 
