@@ -7,18 +7,18 @@ $(function()
         setTimeout(function (){
             main() // call of the function main
             updatetable() // call of the function updatetable
-        }, 1000);
+        }, 0);
         k++;
     }
 
     function updatetable() // definition of the function updatetable
     {
         $.get('/sniff/ippack', function (IPData) {
+            tbody = $('#iptable');
+            console.log(IPData.length);
             console.log("IP data: ", IPData);
             for (var i = 0; i < IPData.length; i++)
             {
-                console.log("IP", IPData[i]);
-                tbody = $('#iptable');
                 var tString = "<tr><td>" + IPData[i].version + "</td>";
                 tString += "<td>" + IPData[i].ip_hlen + "</td>";
                 tString += "<td>" + IPData[i].ttl + "</td>";
