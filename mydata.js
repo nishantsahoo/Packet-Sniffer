@@ -57,7 +57,7 @@ function addIP(IPData)
         ttl: IPData.ttl,
         protocol: IPData.protocol,
         source_address: IPData.source_address,
-        destination_address: IPData.destination_address
+        destination_address: IPData.destination_address 
     });
 }
 
